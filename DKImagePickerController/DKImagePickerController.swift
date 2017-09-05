@@ -433,9 +433,9 @@ open class DKImagePickerController : UINavigationController {
     }
     
     open func done() {
-        self.presentingViewController?.dismiss(animated: true, completion: {
+//        self.presentingViewController?.dismiss(animated: true, completion: {
             self.didSelectAssets?(self.selectedAssets)
-        })
+//        })
     }
     
     // MARK:- Capturing Image
