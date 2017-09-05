@@ -418,7 +418,7 @@ open class DKImagePickerController : UINavigationController {
     internal func dismissCamera() {
         if let currentCamera = self.camera {
             currentCamera.dismiss(animated: true, completion: {
-                self.camera = nil
+//                self.camera = nil
             })
         }
     }
