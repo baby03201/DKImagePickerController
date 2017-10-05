@@ -431,7 +431,11 @@ open class DKImagePickerController : UINavigationController {
     
     open func done() {
 //        self.presentingViewController?.dismiss(animated: true, completion: {
+        if self.selectedAssets.isEmpty {
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+        } else {
             self.didSelectAssets?(self.selectedAssets)
+        }
 //        })
     }
     
