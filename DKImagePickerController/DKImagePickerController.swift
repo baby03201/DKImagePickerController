@@ -379,12 +379,12 @@ open class DKImagePickerController : UINavigationController {
                     if success {
                         if let newAsset = PHAsset.fetchAssets(withLocalIdentifiers: [newVideoIdentifier], options: nil).firstObject {
                             if self.sourceType != .camera || self.viewControllers.count == 0 {
-                                self.dismissCamera()
+//                                self.dismissCamera()
                             }
                             self.selectImage(DKAsset(originalAsset: newAsset))
                         }
                     } else {
-                        self.dismissCamera()
+//                        self.dismissCamera()
                     }
                 })
             }
@@ -416,11 +416,11 @@ open class DKImagePickerController : UINavigationController {
     }
     
     internal func dismissCamera() {
-//        if let currentCamera = self.camera {
-//            currentCamera.dismiss(animated: true, completion: {
-//                self.camera = nil
-//            })
-//        }
+        if let currentCamera = self.camera {
+            currentCamera.dismiss(animated: true, completion: {
+                self.camera = nil
+            })
+        }
     }
     
     open func dismiss() {
@@ -451,12 +451,13 @@ open class DKImagePickerController : UINavigationController {
             DispatchQueue.main.async(execute: { [weak self] in
                 if success {
                     if let newAsset = PHAsset.fetchAssets(withLocalIdentifiers: [newImageIdentifier], options: nil).firstObject {
-                        self?.dismissCamera()
+//                        self?.dismissCamera()
                         self?.selectImage(DKAsset(originalAsset: newAsset))
+                        
                     }
                 } else {
                     if self?.sourceType != .camera {
-                        self?.dismissCamera()
+//                        self?.dismissCamera()
                     }
                     self?.selectImage(DKAsset(image: image))
                 }
@@ -496,12 +497,12 @@ open class DKImagePickerController : UINavigationController {
         library.writeImageData(toSavedPhotosAlbum: data, metadata: metadata, completionBlock: { [weak self] (newURL, error) in
             if let _ = error {
                 if self?.sourceType != .camera {
-                    self?.dismissCamera()
+//                    self?.dismissCamera()
                 }
                 self?.selectImage(DKAsset(image: UIImage(data: data)!))
             } else {
                 if let newAsset = PHAsset.fetchAssets(withALAssetURLs: [newURL!], options: nil).firstObject {
-                    self?.dismissCamera()
+//                    self?.dismissCamera()
                     self?.selectImage(DKAsset(originalAsset: newAsset))
                 }
             }
@@ -523,12 +524,12 @@ open class DKImagePickerController : UINavigationController {
             DispatchQueue.main.async(execute: { [weak self] in
                 if success {
                     if let newAsset = PHAsset.fetchAssets(withLocalIdentifiers: [newImageIdentifier], options: nil).firstObject {
-                        self?.dismissCamera()
+//                        self?.dismissCamera()
                         self?.selectImage(DKAsset(originalAsset: newAsset))
                     }
                 } else {
                     if self?.sourceType != .camera {
-                        self?.dismissCamera()
+//                        self?.dismissCamera()
                     }
                     self?.selectImage(DKAsset(image: UIImage(data: data)!))
                 }
